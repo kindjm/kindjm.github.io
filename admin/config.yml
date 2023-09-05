@@ -3,7 +3,7 @@ backend:
   repo: kindjm/kindjm.github.io
   branch: gh-pages
   base_url: https://kindjm.github.io/
-  auth_endpoint: api/auth
+  auth_endpoint: auth/done
 
 media_folder: static/assets
 public_folder: /assets
