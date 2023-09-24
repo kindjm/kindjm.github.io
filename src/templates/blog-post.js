@@ -15,7 +15,9 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-const BlogPostTemplate = ({ data: { previous, next, post } }) => {
+const BlogPostTemplate = ({ data: { previous, next, post, category } }) => {
+  const categories = category.edges;
+
   const featuredImage = {
     data: post.featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData,
     alt: post.featuredImage?.node?.alt || ``,
@@ -25,6 +27,7 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
     <Layout>
       <Seo title={post.title} description={post.excerpt} />
 
+      <div className="primary">
       <article
         className="blog-post"
         itemScope
@@ -52,37 +55,33 @@ const BlogPostTemplate = ({ data: { previous, next, post } }) => {
         <hr />
 
         <footer>
-          <Bio />
+
+        <nav className="blog-post-nav">
+          {previous && (
+            <Link to={previous.uri} rel="prev">
+              ← {parse(previous.title)}
+            </Link>
+          )}
+        <br />
+          {next && (
+            <Link to={next.uri} rel="next">
+              {parse(next.title)} →
+            </Link>
+          )}
+      </nav>
+
         </footer>
       </article>
-
-      <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
-              <Link to={previous.uri} rel="prev">
-                ← {parse(previous.title)}
-              </Link>
-            )}
-          </li>
-
-          <li>
-            {next && (
-              <Link to={next.uri} rel="next">
-                {parse(next.title)} →
-              </Link>
-            )}
-          </li>
-        </ul>
-      </nav>
+      </div>
+      <div className="secondary">
+        <h5>Category</h5>
+        <ul>
+            <li key="all"><Link  to={`/`} className="category-text">ALL</Link></li>
+            {categories.map(list=>(
+            <li key={parse(list.node.id)} ><Link  to={`/category/${list.node.slug}`} className="category-text">{list.node.name}</Link></li>
+            ))}
+        </ul> 
+        </div>      
     </Layout>
   )
 }
@@ -94,7 +93,8 @@ export const pageQuery = graphql`
     $id: String!
     $previousPostId: String
     $nextPostId: String
-  ) {
+  ) 
+  {
     post: wpPost(id: { eq: $id }) {
       id
       excerpt
@@ -108,7 +108,7 @@ export const pageQuery = graphql`
             childImageSharp {
               gatsbyImageData(
                 quality: 100
-                placeholder: TRACED_SVG
+                placeholder: BLURRED
                 layout: FULL_WIDTH
               )
             }
@@ -123,6 +123,15 @@ export const pageQuery = graphql`
     next: wpPost(id: { eq: $nextPostId }) {
       uri
       title
+    }
+    category: allWpCategory {
+      edges {
+        node {
+          id
+          name
+          slug
+        }
+      }
     }
   }
 `

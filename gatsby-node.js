@@ -1,5 +1,6 @@
 const path = require(`path`)
 const chunk = require(`lodash/chunk`)
+const { slash } = require( `gatsby-core-utils` );
 
 // This is a simple debugging tool
 // dd() will prettily dump to the terminal and kill the process
@@ -25,7 +26,44 @@ exports.createPages = async gatsbyUtilities => {
 
   // And a paginated archive
   await createBlogPostArchive({ posts, gatsbyUtilities })
+
+  // And a category archive - trial
+  await createCategoryArchive({ posts, gatsbyUtilities })
 }
+  
+async function createCategoryArchive({ posts, gatsbyUtilities }) {
+  const graphqlResult = await gatsbyUtilities.graphql(/* GraphQL */ `
+    {
+      allWpCategory {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
+    }
+  `)
+
+  return Promise.all(
+    graphqlResult.data.allWpCategory.edges.map(({ node }) =>
+      gatsbyUtilities.actions.createPage({
+        // Use the WordPress uri as the Gatsby page path
+        // This is a good idea so that internal links and menus work 👍
+        path: `/category/${node.slug}`,
+
+        // use the blog post template as the page component
+        component: path.resolve(`./src/templates/category.js`),
+
+        // `context` is available in the template as a prop and
+        // as a variable in GraphQL.
+        context: {
+          slug: node.slug,
+        },
+      })
+    )
+  )
+} 
+
 
 /**
  * This function creates all the individual blog pages in this site
@@ -132,15 +170,12 @@ async function createBlogPostArchive({ posts, gatsbyUtilities }) {
 async function getPosts({ graphql, reporter }) {
   const graphqlResult = await graphql(/* GraphQL */ `
     query WpPosts {
-      # Query all WordPress blog posts sorted by date
-      allWpPost(sort: { fields: [date], order: DESC }) {
+      allWpPost(sort: {date: DESC}) {
         edges {
           previous {
             id
           }
 
-          # note: this is a GraphQL alias. It renames "node" to "post" for this query
-          # We're doing this because this "node" is a post! It makes our code more readable further down the line.
           post: node {
             id
             uri

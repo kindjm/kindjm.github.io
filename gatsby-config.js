@@ -7,6 +7,19 @@
  */
 
 module.exports = {
+  siteMetadata: {
+    title: `Kind JM`,
+    description: `Inspiring your thinking - 일상의 궁금함을 알아보고 공유하는 블로그`,
+    author: `Kind JM`,
+    siteUrl: `https://kindjm.net`,
+    social: {
+      twitter: ``,
+      facebook: ``,
+      github: ``,
+      linkedin: ``,
+      email: `jeminad2@gmail.com`
+    },
+  },  
   /**
    * Adding plugins to this array adds them to your Gatsby site.
    *
@@ -14,6 +27,41 @@ module.exports = {
    * If you need any more you can search here: https://www.gatsbyjs.com/plugins/
    */
   plugins: [
+    {
+      resolve: 'gatsby-plugin-yoast-sitemap',
+      options: {
+        baseUrl: 'https://kindjm.mycafe24.com',
+        gatsbyUrl:'https://kindjm.net'
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        sitemap: null,
+        host: null,
+        policy: [
+          {
+            userAgent: "Googlebot",
+            allow: "/",
+            disallow: "/search",
+            crawlDelay: 2,
+          },
+          {
+            userAgent: "OtherBot",
+            allow: ["/allow-for-all-bots", "/allow-only-for-other-bot"],
+            disallow: ["/admin", "/login"],
+            crawlDelay: 2,
+          },
+          {
+            userAgent: "*",
+            allow: "/",
+            disallow: "/search",
+            crawlDelay: 10,
+            cleanParam: "ref /articles/",
+          },
+        ],
+      }
+    },    
     {
       /**
        * First up is the WordPress source plugin that connects Gatsby
@@ -28,7 +76,7 @@ module.exports = {
         // the only required plugin option for WordPress is the GraphQL url.
         url:
           process.env.WPGRAPHQL_URL ||
-          `https://wpgatsbydemo.wpengine.com/graphql`,
+          `https://kindjm.mycafe24.com/graphql`,
       },
     },
 
@@ -58,8 +106,8 @@ module.exports = {
       // See https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/?=gatsby-plugin-manifest
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter WordPress Blog`,
-        short_name: `GatsbyJS & WP`,
+        name: `Kind JM WordPress Blog`,
+        short_name: `Kind JM`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
