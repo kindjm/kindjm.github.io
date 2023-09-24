@@ -31,7 +31,7 @@ module.exports = {
       resolve: 'gatsby-plugin-yoast-sitemap',
       options: {
         baseUrl: 'https://kindjm.mycafe24.com',
-        gatsbyUrl:'https://kindjm.net'
+        gatsbyUrl:'https://kindjm.netlify.app'
       }
     },
     {
@@ -39,27 +39,7 @@ module.exports = {
       options: {
         sitemap: null,
         host: null,
-        policy: [
-          {
-            userAgent: "Googlebot",
-            allow: "/",
-            disallow: "/search",
-            crawlDelay: 2,
-          },
-          {
-            userAgent: "OtherBot",
-            allow: ["/allow-for-all-bots", "/allow-only-for-other-bot"],
-            disallow: ["/admin", "/login"],
-            crawlDelay: 2,
-          },
-          {
-            userAgent: "*",
-            allow: "/",
-            disallow: "/search",
-            crawlDelay: 10,
-            cleanParam: "ref /articles/",
-          },
-        ],
+        policy: [{userAgent: '*', allow: '/'}]
       }
     },    
     {
