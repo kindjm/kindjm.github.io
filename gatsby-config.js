@@ -11,7 +11,7 @@ module.exports = {
     title: `Kind JM`,
     description: `Inspiring your thinking - 일상의 궁금함을 알아보고 공유하는 블로그`,
     author: `Kind JM`,
-    siteUrl: `https://kindjm.net`,
+    siteUrl: `https://kindjm.com`,
     social: {
       twitter: ``,
       facebook: ``,
@@ -31,7 +31,7 @@ module.exports = {
       resolve: 'gatsby-plugin-yoast-sitemap',
       options: {
         baseUrl: 'https://kindjm.mycafe24.com',
-        gatsbyUrl:'https://kindjm.netlify.app'
+        gatsbyUrl:'https://kindjm.com'
       }
     },
     {
@@ -92,7 +92,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/kindjm-icon.png`,
       },
     },
 

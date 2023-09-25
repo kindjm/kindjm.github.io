@@ -14,6 +14,7 @@ import "../css/@wordpress/block-library/build-style/theme.css"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import Utterances from '../components/Utterances'
 
 const BlogPostTemplate = ({ data: { previous, next, post, category } }) => {
   const categories = category.edges;
@@ -69,7 +70,8 @@ const BlogPostTemplate = ({ data: { previous, next, post, category } }) => {
             </Link>
           )}
       </nav>
-
+        <br />
+        <Utterances />
         </footer>
       </article>
       </div>
