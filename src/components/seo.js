@@ -80,7 +80,7 @@ const Seo = ({ description, lang, meta, title }) => {
 Seo.defaultProps = {
   lang: `en`,
   meta: [],
-  description: ``,
+  description: `Inspiring your thinking - 일상의 궁금함을 알아보고 공유하는 블로그`,
 }
 
 Seo.propTypes = {

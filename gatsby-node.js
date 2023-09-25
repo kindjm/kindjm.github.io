@@ -57,7 +57,7 @@ async function createCategoryArchive({ posts, gatsbyUtilities }) {
         // `context` is available in the template as a prop and
         // as a variable in GraphQL.
         context: {
-          slug: node.slug,
+          currentSlug: node.slug,
         },
       })
     )

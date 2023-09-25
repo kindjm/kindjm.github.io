@@ -10,14 +10,16 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-
-const CategoryIndex = ({ data }) => {
+const CategoryIndex = ({ 
+    data,
+    pageContext: { currentSlug }, 
+  }) => {
     const posts = data.allWpPost.nodes;
     const categories = data.allWpCategory.edges;
 
     return (
     <Layout>
-    <Seo title="category" description="category" />
+    <Seo title={currentSlug} description={`${currentSlug} | Category of Kind JM `} />
 
     <div className="primary">
     <div className="content-box clearfix">
@@ -87,8 +89,8 @@ const CategoryIndex = ({ data }) => {
 export default CategoryIndex
 
 export const GET_CATEGORY_PAGES = graphql`
-query GET_CATEGORY_PAGES($slug: String!) {
-  allWpPost(filter: { categories: { nodes: { elemMatch: { slug: { eq: $slug } } } } } limit: 5) {
+query GET_CATEGORY_PAGES($currentSlug: String!) {
+  allWpPost(filter: { categories: { nodes: { elemMatch: { slug: { eq: $currentSlug } } } } } limit: 5) {
     nodes {
         id
         excerpt
