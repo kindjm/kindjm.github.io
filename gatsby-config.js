@@ -15,7 +15,7 @@ module.exports = {
     social: {
       twitter: ``,
       facebook: ``,
-      github: ``,
+      github: `https://github.com/kindjm`,
       linkedin: ``,
       email: `jeminad2@gmail.com`
     },
