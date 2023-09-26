@@ -80,7 +80,16 @@ const Seo = ({ description, lang, meta, title }) => {
           name: `yandex-verification`,
           content: 'b9470a0117e7882d',
         },        
+        {
+          name: `msapplication-TileColor`,
+          content: '#da532c',
+        },  
+        {
+          name: `theme-color`,
+          content: '#ffffff',
+        },  
       ].concat(meta)}
+   
     />
   )
 }
@@ -96,6 +105,18 @@ Seo.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
-}
+} 
+
+export const Head = () => {
+  return (
+    <>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+    </>
+  );
+ };
 
 export default Seo

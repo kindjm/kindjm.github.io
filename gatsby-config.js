@@ -89,7 +89,7 @@ module.exports = {
         name: `Kind JM WordPress Blog`,
         short_name: `Kind JM`,
         start_url: `/`,
-        background_color: `#ffffff`,
+        background_color: `#ffffff`,  
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `content/assets/kindjm-icon.png`,
