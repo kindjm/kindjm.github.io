@@ -30,7 +30,7 @@ const Seo = ({ description, lang, meta, title }) => {
   )
 
   const metaDescription = description || wp.generalSettings?.description
-  const defaultTitle = wp.generalSettings?.title
+  //const defaultTitle = wp.generalSettings?.title
 
   return (
     <Helmet
@@ -38,7 +38,7 @@ const Seo = ({ description, lang, meta, title }) => {
         lang,
       }}
       title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
+//      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
       meta={[
         {
           name: `description`,
