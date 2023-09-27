@@ -17,7 +17,7 @@ const BlogIndex = ({
   if (!posts.length) {
     return (
       <Layout isHomePage>
-        <Seo title="Index of Kind JM" />
+        <Seo title="Kind JM" />
         <p>
           No blog posts found. Add posts to your WordPress site and they'll
           appear here!
@@ -28,7 +28,7 @@ const BlogIndex = ({
 
   return (
     <Layout isHomePage>
-      <Seo title="Index of Kind JM" />
+      <Seo title="Kind JM" />
 
       <div className="primary">
       <div className="content-box clearfix">
