@@ -98,7 +98,7 @@ module.exports = {
 
     // See https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/?=gatsby-plugin-react-helmet
     `gatsby-plugin-react-helmet`,
-    
+
     /**
      * this (optional) plugin enables Progressive Web App + Offline functionality
      * To learn more, visit: https://gatsby.dev/offline
@@ -116,6 +116,20 @@ module.exports = {
           // Puts tracking script in the head instead of the body
           head: true,
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-addsocialshare-share`,
+      options: {
+        size: 32,
+        providers:{"facebook":"Facebook","twitter":"Twitter","kakao":"Kakao","linkedin":"Linkedin","pinterest":"Pinterest","copylink":"Copy Link"},
+        corners:"5%",
+        //bgcolor:"#000000",
+        interfacetype: "floating", //inline,floating
+        topoffset: "30%", //work only floating interface
+        id: ".ass_interface",
+        alignment_desktop: "left", //left,right,hide
+        alignment_mobile: "bottom", //top,bottom,hide
       },
     },
   ],
