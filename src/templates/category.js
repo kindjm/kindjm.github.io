@@ -90,7 +90,7 @@ export default CategoryIndex
 
 export const GET_CATEGORY_PAGES = graphql`
 query GET_CATEGORY_PAGES($currentSlug: String!) {
-  allWpPost(filter: { categories: { nodes: { elemMatch: { slug: { eq: $currentSlug } } } } } limit: 5) {
+  allWpPost(filter: { categories: { nodes: { elemMatch: { slug: { eq: $currentSlug } } } } } limit: 10) {
     nodes {
         id
         excerpt
