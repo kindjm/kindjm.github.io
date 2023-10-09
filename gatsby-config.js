@@ -118,7 +118,6 @@ module.exports = {
         },
       },
     },   
-     
     {
       resolve: `gatsby-plugin-addsocialshare-share`,
       options: {
