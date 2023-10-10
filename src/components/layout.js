@@ -2,6 +2,8 @@ import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import parse from "html-react-parser"
 
+import GoogleAdvertise from "../components/GoogleAdvertise"
+
 const Layout = ({ isHomePage, children }) => {
   const {
     wp: {
@@ -30,6 +32,14 @@ const Layout = ({ isHomePage, children }) => {
             {title}
           </Link>
         )}
+        <div className="site-ads-leaderboard">   
+          <GoogleAdvertise
+            client="ca-pub-3629499401438446"
+            slot="1930227054"
+            format="auto"
+            responsive="true"
+          />            
+        </div>        
       </header>
 
       <main>{children}</main>

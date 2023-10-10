@@ -392,3 +392,10 @@ a:focus {
   }
 
 }
+
+.site-ads-leaderboard {
+	position: relative;
+	max-width: 1080px;
+	height: 90px;
+	margin: 0 auto;
+}

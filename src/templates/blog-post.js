@@ -15,6 +15,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Utterances from '../components/Utterances'
+import GoogleAdvertise from "../components/GoogleAdvertise"
 
 const BlogPostTemplate = ({ data: { previous, next, post, category } }) => {
   const categories = category.edges;
@@ -38,6 +39,13 @@ const BlogPostTemplate = ({ data: { previous, next, post, category } }) => {
           <h1 itemProp="headline">{parse(post.title)}</h1>
 
           <p>{post.date}</p>
+
+          <GoogleAdvertise
+            client="ca-pub-3629499401438446"
+            slot="7878905348"
+            format="auto"
+            responsive="true"
+          />             
 
           {/* if we have a featured image for this post let's display it */}
           {featuredImage?.data && (
@@ -74,6 +82,13 @@ const BlogPostTemplate = ({ data: { previous, next, post, category } }) => {
         <Utterances />
         </footer>
       </article>
+
+        <GoogleAdvertise
+          client="ca-pub-3629499401438446"
+          slot="1176382736"
+          format="autorelaxed"
+          responsive="true"
+        />                 
       </div>
       <div className="secondary">
         <h5>Category</h5>
