@@ -123,7 +123,8 @@ module.exports = {
       options: {
         publisherId: `ca-pub-3629499401438446`
       },
-    },    
+    },   
+     
     {
       resolve: `gatsby-plugin-addsocialshare-share`,
       options: {
